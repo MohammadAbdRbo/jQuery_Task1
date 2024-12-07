@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Practice</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+
+    .task-box {
+      border: 1px solid #ddd;
+      background-color: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .task-box h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    button {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin: 5px 0;
+    }
+
+    #div5 {
+      transition: all 0.3s ease;
+    }
+
+    input {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    #p {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Task 2 -->
+  <div class="task-box">
+    <h2>Task 2</h2>
+    <button id="btn2">Click Me!</button>
+    <div id="div2" style="display: none;">
+        Hello World!
+    </div>
+  </div>
+
+  <script>
+    $("#btn2").click(() => {
+      $("#div2").show();
+    });
+  </script>
+
+  <!-- Task 3 -->
+  <div class="task-box">
+    <h2>Task 3</h2>
+    <ul>
+      <li id="red">red</li>
+      <li id="gre">green</li>
+      <li id="blu">blue</li>
+    </ul>
+    <button id="btn3">Change Color</button>
+  </div>
+
+  <script>
+    $("#btn3").click(() => {
+      $("#red").css('color', 'red');
+      $("#gre").css('color', 'green');
+      $("#blu").css('color', 'blue');
+    });
+  </script>
+
+  <!-- Task 4 -->
+  <div class="task-box">
+    <h2>Task 4</h2>
+    <input type="text" id="inp4">
+    <button id="btn4">Add Item</button>
+    <ul id="NewList4"></ul>
+  </div>
+
+  <script>
+    $("#btn4").click(() => {
+      $("#NewList4").append(`<li>${$("#inp4").val()}</li>`);
+    });
+  </script>
+
+  <!-- Task 5 -->
+  <div class="task-box">
+    <h2>Task 5</h2>
+    <div id="div5" style="background-color: blue; width: 50px; height: 50px;"></div>
+    <button id="btn5">Animate</button>
+  </div>
+
+  <script>
+    $("#btn5").click(() => {
+      $("#div5").animate({
+        width: "200px",
+        height: "200px",
+        marginLeft: "100px"
+      }, 1000);
+    });
+  </script>
+
+  <!-- Task 6 -->
+  <div class="task-box">
+    <h2>Task 6</h2>
+    <button id="btn6">Hover Over Me</button>
+    <p id="p" style="display: none;">Hover to show and hide me!</p>
+  </div>
+
+  <script>
+    $("#btn6").hover(
+      () => {
+        $("#p").show();
+      },
+      () => {
+        $("#p").hide();
+      }
+    );
+  </script>
+
+  <!-- Task 7 -->
+  <div class="task-box">
+    <h2>Task 7: To-Do List</h2>
+    <input id="inp7" type="text">
+    <button id="btn7">Add Task</button>
+    <ul id="ul7"></ul>
+    <button id="remove-all7">Clear All</button>
+  </div>
+
+  <script>
+    $("#btn7").click(() => {
+      const task = $("#inp7").val();
+      if (task) {
+        $("#ul7").append(`<li>${task}</li>`);
+        $("#inp7").val("");
+      }
+    });
+
+    $("#ul7").on("click", "li", function () {
+      $(this).css("color", "green");
+    });
+
+    $("#remove-all7").click(() => {
+      $("#ul7").empty();
+    });
+  </script>
+
+</body>
+</html>
